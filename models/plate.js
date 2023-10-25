@@ -13,8 +13,12 @@ Plate.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    descriptionPlate: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     price: {
-        type: DataTypes.DECIMAL(10, 0),
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
     photo: {
