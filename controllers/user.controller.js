@@ -14,7 +14,7 @@ const loginCtrl = async (req = request, res = response) => {
     console.log('USER -> ', data)
 
     if(!data) 
-        return res.json({err: true, mgs: "Incorrect username!", data: null, token: null})
+        return res.json({err: true, msg: "Incorrect username!", data: null, token: null})
 
     passOk = await comparePass(passwordLogin, data.dataValues.passwordLogin)
 
