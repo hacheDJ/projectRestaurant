@@ -23,6 +23,7 @@ User.init({
     },
     usernameLogin: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false
     },
     passwordLogin: {

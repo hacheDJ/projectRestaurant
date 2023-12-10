@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
             ssl: {
                 rejectUnauthorized: false
             }
-          }
+          } 
     }
 )
 
@@ -22,7 +22,7 @@ try {
         console.log('>>> Connection DB with Mysql Successfull!!');
     })()
 } catch (err) {
-    console.error('Error <<<', err);
+    console.error('Error >>>', err);
 }
 
 module.exports = sequelize

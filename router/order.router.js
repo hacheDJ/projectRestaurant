@@ -1,9 +1,12 @@
 const { Router } = require('express')
-const { orderRegisterCtrl } = require('../controllers/order.controller')
+const { registerCtrl, listByStatePending, editStateDelivered, editStatePaid } = require('../controllers/order.controller')
 
 const router = Router()
 
 router
-    .post('/order', orderRegisterCtrl)
+    .post('/order', registerCtrl)
+    .get('/order/listByStatePending', listByStatePending)
+    .put('/order/editStateDelivered/:idOrder', editStateDelivered)
+    .put('/order/editStatePaid/:idOrder', editStatePaid)
 
 module.exports = router

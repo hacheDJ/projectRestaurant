@@ -1,29 +1,39 @@
 const {request, response} = require('express') 
 const User = require('../models/user')
+const {comparePass} = require('../handlers/bcrypt')
+const {signToken} = require('../handlers/jwt')
 
-const userLoginCtrl = async (req = request, res = response) => {
+const loginCtrl = async (req = request, res = response) => {
     const {usernameLogin, passwordLogin} = req.body
-    const data = await User.findAll({
+    const [data] = await User.findAll({
         where: {
             usernameLogin
         }
     })
 
-    if(data.length === 0) 
-        return res.json({err: true, mgs: "Incorrect username!", data: null})
+    console.log('USER -> ', data)
 
-    if(data[0].passwordLogin != passwordLogin) 
-        return res.json({err: true, msg: "Incorrect password!", data: null})
+    if(!data) 
+        return res.json({err: true, mgs: "Incorrect username!", data: null, token: null})
 
-    res.json({err: false, msg: `Welcome ${data[0].namesUser}`, data})
+    passOk = await comparePass(passwordLogin, data.dataValues.passwordLogin)
+
+    console.log('PASSOK -> ', passOk)
+
+    if(!passOk) 
+        return res.json({err: true, msg: "Incorrect password!", data: null, token: null})
+
+    const token = signToken(data.dataValues)
+
+    res.json({err: false, msg: `Welcome ${data.dataValues.namesUser}`, data, token})
 }
 
-const userAllCtrl =  async (req = request, res = response) => {
+const listAllCtrl =  async (req = request, res = response) => {
     const users = await User.findAll()
     res.json(users)
 }
 
 module.exports = {
-    userLoginCtrl, 
-    userAllCtrl
+    loginCtrl, 
+    listAllCtrl
 }

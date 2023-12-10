@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const { join } = require('path')
-const { routerUser, routerPlate, routerOrder } = require('../router/index') 
+const { routerUser, routerPlate, routerOrder, routerDetailOrder } = require('../router/index') 
 
 const baseUrl = '/api/v0.1'
 
@@ -14,5 +14,6 @@ app
     .use(baseUrl, routerUser)
     .use(baseUrl, routerPlate)
     .use(baseUrl, routerOrder)
+    .use(baseUrl, routerDetailOrder)
 
 module.exports = app

@@ -5,15 +5,15 @@ class Plate extends Model{}
 
 Plate.init({
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true
     },
     namePlate: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    descriptionPlate: {
+    description: {
         type: DataTypes.STRING,
         allowNull: false
     },

@@ -1,5 +1,7 @@
 const sequelize = require('../db/sequelize.mysql')
 const { Model, DataTypes } = require('sequelize')
+const Plate = require('../models/plate')
+const Order = require('../models/order')
 
 class DetailOrder extends Model{}
 
@@ -11,6 +13,10 @@ DetailOrder.init({
     },
     quantity: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    state: {
+        type: DataTypes.CHAR,
         allowNull: false
     },
     idPlate: {
@@ -32,6 +38,14 @@ DetailOrder.init({
     modelName:'DetailOrder',
     tableName: 'tb_detail_order',
     timestamps: false
+})
+
+DetailOrder.belongsTo(Plate, {
+    foreignKey: "idPlate"
+})
+
+DetailOrder.belongsTo(Order, {
+    foreignKey: "idOrder"
 })
 
 module.exports = DetailOrder
