@@ -5,7 +5,7 @@ const {signToken} = require('../handlers/jwt')
 
 const loginCtrl = async (req = request, res = response) => {
     const {usernameLogin, passwordLogin} = req.body
-    const [data] = await User.findAll({
+    const [data] = await User.findOne({
         where: {
             usernameLogin
         }
