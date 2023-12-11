@@ -25,12 +25,12 @@ const loginCtrl = async (req = request, res = response) => {
 
     const token = signToken(data.dataValues)
 
-    res.json({err: false, msg: `Welcome ${data.dataValues.namesUser}`, data, token})
+    return res.json({err: false, msg: `Welcome ${data.dataValues.namesUser}`, data, token})
 }
 
 const listAllCtrl =  async (req = request, res = response) => {
     const users = await User.findAll()
-    res.json(users)
+    return res.json(users)
 }
 
 module.exports = {
