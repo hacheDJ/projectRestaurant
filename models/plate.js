@@ -13,7 +13,7 @@ Plate.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    description: {
+    descriptionPlate: {
         type: DataTypes.STRING,
         allowNull: false
     },
