@@ -1,5 +1,6 @@
 const {request, response} = require('express') 
 const Plate = require('../models/plate')
+const {get} = require('../handlers/aws')
 
 const listAllCtrl =  async (req = request, res = response) => {
     const plates = await Plate.findAll()
@@ -46,8 +47,15 @@ const editCtrl =  async (req = request, res = response) => {
     } 
 }
 
+const getPhotoCtrl = (req = request, res = response) => {
+    const nameFile = req.params.nameFile
+
+    get(nameFile).then(res => res.json(console.log('promise-------> ', res)))
+}
+
 module.exports = {
     listAllCtrl,
     addCtrl,
-    editCtrl
+    editCtrl,
+    getPhoto
 }

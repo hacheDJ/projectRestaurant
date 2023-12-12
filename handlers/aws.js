@@ -7,11 +7,11 @@ const s3 = new aws.S3({
     region: process.env.AWS_REGION
 })
 
-const save = (file, nameFile) => {
+const save = async (file, nameFile) => {
     return await s3.upload({
         Body: file.buffer,
-        Bucket: "cyclic-unusual-tights-foal-us-east-2",
-        Key: `uploads/${nameFile}`,
+        Bucket: process.env.CYCLIC_BUCKET_NAME,
+        Key: nameFile,
     }).promise()
 }
 
@@ -19,13 +19,11 @@ const getAll = () => {
 
 } 
 
-const get = (file) => {
-    let my_file = await s3.getObject({
-        Bucket: "cyclic-unusual-tights-foal-us-east-2",
-        Key: `uploads/${file}`,
+const get = async (file) => {
+    return await s3.getObject({
+        Bucket: process.env.CYCLIC_BUCKET_NAME,
+        Key: file,
     }).promise()
-
-    return my_file
 }
 
 module.export = {

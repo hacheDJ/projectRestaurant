@@ -3,9 +3,12 @@ const multer = require('multer'),
  { S3Client } = require('@aws-sdk/client-s3'),
  { join } = require('path')
 
-const CURRENT_PATH = join(__dirname, '../'),
+/*const CURRENT_PATH = join(__dirname, '../'),
  MINETYPES = ['image/jpeg', 'image/png']
-/* console.log('CURRENT PATH ->', CURRENT_PATH) */
+ console.log('CURRENT PATH ->', CURRENT_PATH) */
+
+
+
 const upload = multer({
     storage: multerS3({
         s3: new S3Client(),
