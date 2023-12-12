@@ -9,6 +9,6 @@ router
     .get('/plate', listAllCtrl)
     .post('/plate/register', upload.single('photo'), addCtrl)
     .put('/plate/edit', editCtrl)
-    .get('/showPhoto/:nameFile', getPhotoCtrl)
+    .get('/plate/showPhoto/:nameFile', getPhotoCtrl)
 
 module.exports = router
