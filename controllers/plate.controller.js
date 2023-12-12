@@ -57,5 +57,5 @@ module.exports = {
     listAllCtrl,
     addCtrl,
     editCtrl,
-    getPhoto
+    getPhotoCtrl
 }
