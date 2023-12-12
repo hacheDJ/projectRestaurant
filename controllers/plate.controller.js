@@ -10,7 +10,6 @@ const addCtrl =  async (req = request, res = response) => {
     try {
         const photo = req.imgName
         const {namePlate, descriptionPlate, price} = req.body
-        console.log('------------------>', descriptionPlate)
         const plate = {namePlate, descriptionPlate, price, photo, state: "disponible"}
         const plateRegister = await Plate.create(plate)
 
@@ -24,7 +23,7 @@ const addCtrl =  async (req = request, res = response) => {
 
 const editCtrl =  async (req = request, res = response) => {
     try {
-        const {id, namePlate, description, price, photo, state} = req.body
+        const {id, namePlate, descriptionPlate, price, photo, state} = req.body
         const findPlate = await Plate.findOne({
             where: {
                 id
@@ -34,7 +33,7 @@ const editCtrl =  async (req = request, res = response) => {
         if(!findPlate)
             return res.json({err: true, msg: `No existe el plato con id ${id}`})
 
-        const plate = {namePlate, description, price, photo, state}
+        const plate = {namePlate, descriptionPlate, price, photo, state}
         await Plate.update(plate, {
             where: {
                 id
