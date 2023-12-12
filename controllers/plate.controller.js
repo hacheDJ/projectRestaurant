@@ -9,8 +9,8 @@ const listAllCtrl =  async (req = request, res = response) => {
 const addCtrl =  async (req = request, res = response) => {
     try {
         const photo = req.imgName
-        const {namePlate, description, price, state} = req.body
-        const plate = {namePlate, description, price, photo, state: "disponible"}
+        const {namePlate, descriptionPlate, price} = req.body
+        const plate = {namePlate, descriptionPlate, price, photo, state: "disponible"}
         const plateRegister = await Plate.create(plate)
 
         /* console.log('NEW PLATE', plateRegister) */
