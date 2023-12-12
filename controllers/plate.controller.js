@@ -50,7 +50,13 @@ const editCtrl =  async (req = request, res = response) => {
 const getPhotoCtrl = (req = request, res = response) => {
     const nameFile = req.params.nameFile
 
-    get(nameFile).then(x => res.json(console.log('promise-------> ', x)))
+   /*  res.setHeader('Content-Type', 'image/jpeg') */
+   res.setHeader('Content-Type', 'image/*')
+
+    get(nameFile).then(x => {
+        console.log('promise-------> ', x.Body)
+        res.send(x)
+    })
 }
 
 module.exports = {
