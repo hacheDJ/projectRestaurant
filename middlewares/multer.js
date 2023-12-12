@@ -5,7 +5,7 @@ const multer = require('multer'),
 
 const CURRENT_PATH = join(__dirname, '../'),
  MINETYPES = ['image/jpeg', 'image/png']
-/* console.log('CURRENT PATH ->', CURRENT_PATH); */
+/* console.log('CURRENT PATH ->', CURRENT_PATH) */
 const upload = multer({
     storage: multerS3({
         s3: new S3Client(),
