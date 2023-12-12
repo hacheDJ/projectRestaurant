@@ -14,7 +14,7 @@ const upload = multer({
             cb(null, {fieldName: file.fieldname})
         },
         key: function(req, file, cb){
-            const nameModified = file.originalname.split('.')[0]+Date.now().toString()+'_'+'.'+file.originalname.split('.')[1]
+            const nameModified = file.originalname.split('.')[0]+'_'+Date.now().toString()+'.'+file.originalname.split('.')[1]
             req.imgName = nameModified
             cb(null, nameModified)
         }
