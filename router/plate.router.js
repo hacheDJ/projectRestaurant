@@ -6,7 +6,7 @@ const upload = require('../middlewares/multer')
 const router = Router()
 
 router
-    .get('/plate', listAllCtrl)
+    .get('/plate/listAll', listAllCtrl)
     .post('/plate/register', upload.single('photo'), addCtrl)
     .put('/plate/edit', editCtrl)
     .get('/plate/showPhoto/:nameFile', getPhotoCtrl)
