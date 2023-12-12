@@ -11,7 +11,7 @@ const save = async (file, nameFile) => {
     return await s3.upload({
         Body: file.buffer,
         Bucket: process.env.CYCLIC_BUCKET_NAME,
-        Key: nameFile,
+        Key: nameFile
     }).promise()
 }
 
@@ -22,10 +22,10 @@ const getAll = () => {
 const get = async (file) => {
     return await s3.getObject({
         Bucket: process.env.CYCLIC_BUCKET_NAME,
-        Key: file,
+        Key: file
     }).promise()
 }
 
-module.export = {
+module.exports = {
     save, get, getAll
 }
