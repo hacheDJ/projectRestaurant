@@ -10,6 +10,7 @@ const addCtrl =  async (req = request, res = response) => {
     try {
         const photo = req.imgName
         const {namePlate, descriptionPlate, price} = req.body
+        console.log('------------------>', descriptionPlate)
         const plate = {namePlate, descriptionPlate, price, photo, state: "disponible"}
         const plateRegister = await Plate.create(plate)
 
