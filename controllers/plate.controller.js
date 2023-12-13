@@ -11,10 +11,11 @@ const listAllCtrl =  async (req = request, res = response) => {
 const addCtrl =  async (req = request, res = response) => {
     
     try {
-        if(!req.photo) return res.json({err: true, msg: `No añadio ninguna foto`})
         
         const {namePlate, descriptionPlate, photo, price} = req.body
-
+        
+        if(!photo) return res.json({err: true, msg: `No añadio ninguna foto`})
+        console.log('PHOTO-----> ', photo)
         const originalName = photo.originalName
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
