@@ -1,7 +1,5 @@
 const multer = require('multer'),
- multerS3 = require('multer-s3'),
- { S3Client } = require('@aws-sdk/client-s3'),
- { join } = require('path')
+ bucket = require('firebase-admin')
 
 /*const CURRENT_PATH = join(__dirname, '../'),
  MINETYPES = ['image/jpeg', 'image/png']
