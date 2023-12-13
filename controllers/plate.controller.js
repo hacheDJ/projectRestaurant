@@ -36,7 +36,7 @@ const addCtrl =  async (req = request, res = response) => {
         const bufferStream = new stream.PassThrough();
         bufferStream.end(photoFile.buffer);
 
-        const file = bucket.file(modifiedName)
+        const file = bucket.file(`upload/${modifiedName}`)
 
         bufferStream.pipe(file.createWriteStream({
             metadata: {
