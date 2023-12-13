@@ -56,10 +56,10 @@ const addCtrl =  async (req = request, res = response) => {
             const [metadata] = await file.getMetadata();
 
             // Obtener el token de la URL pública generada automáticamente
-            const token = metadata.metadata.firebaseStorageDownloadTokens;
+            //const token = metadata.metadata.firebaseStorageDownloadTokens;
 
             console.log("METADATA---> ", metadata.metadata)
-            console.log("TOKEN---> ", token)
+            //console.log("TOKEN---> ", token)
 
             const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
             const plateRegister = await Plate.create(plate)
