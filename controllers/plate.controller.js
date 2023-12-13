@@ -23,7 +23,8 @@ const addCtrl =  async (req = request, res = response) => {
         //console.log('PHOTO-----> ', photo)
         console.log('PHOTO-----> ', price)
         console.log('IS-BUFFER-----> ', typeof photoFile.buffer, Buffer.isBuffer(photoFile.buffer))
-        
+        console.log('FILE-PATH-----> ', req.file.path)
+
         if(!photoFile) return res.json({err: true, msg: `No añadio ninguna foto`})
         const originalName = photoFile.originalname
         const extension = originalName.split('.').pop()
