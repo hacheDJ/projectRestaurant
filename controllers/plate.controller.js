@@ -27,7 +27,7 @@ const addCtrl =  async (req = request, res = response) => {
         const originalName = photoFile.originalname
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
-        const modifiedName = `${nameWithoutExtension}_${Date.now().toDateString()}_${extension}`
+        const modifiedName = `${nameWithoutExtension}_${Date.now().toString()}_${extension}`
         console.log('MODIFIED_NAME-----> ', modifiedName)
         bucket.upload(photoFile.buffer, {
             destination: modifiedName,
