@@ -1,4 +1,4 @@
-const { initializeApp } = require('firebase-admin/app')
+const { initializeApp, cert } = require('firebase-admin/app')
 const { getStorage } = require('firebase-admin/storage')
 
 const serviceAccount = require('./serviceAccountKey.json')
