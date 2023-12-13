@@ -22,12 +22,13 @@ const addCtrl =  async (req = request, res = response) => {
         console.log('PHOTO-----> ', descriptionPlate)
         //console.log('PHOTO-----> ', photo)
         console.log('PHOTO-----> ', price)
+        console.log('IS-BUFFER-----> ', typeof photoFile.buffer, Buffer.isBuffer(photoFile.buffer))
         
         if(!photoFile) return res.json({err: true, msg: `No añadio ninguna foto`})
         const originalName = photoFile.originalname
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
-        const modifiedName = `${nameWithoutExtension}_${Date.now().toString()}_${extension}`
+        const modifiedName = `${nameWithoutExtension}_${Date.now().toString()}.${extension}`
         console.log('MODIFIED_NAME-----> ', modifiedName)
         bucket.upload(photoFile.buffer, {
             destination: modifiedName,
