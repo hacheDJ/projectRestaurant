@@ -22,16 +22,15 @@ const credentials = new aws.Credentials({
   // Configura el SDK de AWS con las credenciales
   aws.config.credentials = credentials;
   
-  // Crea una instancia de IAM (Identity and Access Management)
-  const sts = new aws.STS();
+  const iam = new aws.IAM();
 
-  // Obtiene los detalles de la identidad
-  sts.getCallerIdentity({}, (err, data) => {
+  // Obtiene los detalles de la cuenta
+  iam.getAccountSummary({}, (err, data) => {
     if (err) {
-      console.error('XXEEEError al obtener detalles de la cuenta:', err);
+      console.error('Error al obtener detalles de la cuenta:', err);
     } else {
-      console.log('ID de cuenta:', data.Account);
-      console.log('Arn de cuenta:', data.Arn);
+      console.log('ID de cuenta:', data.SummaryMap.AccountId);
+      console.log('Alias de cuenta:', data.SummaryMap.AccountAlias);
     }
   })
 
