@@ -13,7 +13,10 @@ const addCtrl =  async (req = request, res = response) => {
     try {
         
         const {namePlate, descriptionPlate, photo, price} = req.body
+        console.log('PHOTO-----> ', namePlate)
+        console.log('PHOTO-----> ', descriptionPlate)
         console.log('PHOTO-----> ', photo)
+        console.log('PHOTO-----> ', price)
         
         if(!photo) return res.json({err: true, msg: `No añadio ninguna foto`})
         const originalName = photo.originalName
