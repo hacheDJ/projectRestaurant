@@ -7,7 +7,7 @@ const router = Router()
 
 router
     .get('/plate/listAll', listAllCtrl)
-    .post('/plate/register', upload.fields([{name:"namePlate", maxCount:1}, {name:"descriptionPlate", maxCount:1}, {name:"price", maxCount:1}, {name:"photo", maxCount:1}, {name:"state", maxCount:1},] ), addCtrl)
+    .post('/plate/register', upload.single('photo'), addCtrl)
     .put('/plate/edit', editCtrl)
     .get('/plate/showPhoto/:nameFile', getPhotoCtrl)
 
