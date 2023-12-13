@@ -38,18 +38,11 @@ const addCtrl =  async (req = request, res = response) => {
 
         const file = bucket.file(`upload/${modifiedName}`)
 
-        const accessToken = ""
+        
 
-        const signedUrl = file.getSignedUrl({
-            action: "read",
-            expires: new Date().getMilliseconds() + (new Date().getMilliseconds() + 600000) 
-        }).then(
-            signedUrl => {
-                accessToken = signedUrl.split('?').pop()
-            }
-        )
+        
 
-        console.log("ACCESSTOKEN---> ", accessToken)
+        
 
         bufferStream.pipe(file.createWriteStream({
             metadata: {
@@ -60,7 +53,19 @@ const addCtrl =  async (req = request, res = response) => {
             res.json({ err: true, msg: err.message })
           }).on('finish', async () => {
 
-      
+            const accessToken = ""
+
+            file.getSignedUrl({
+                action: "read",
+                expires: new Date().getMilliseconds() + (new Date().getMilliseconds() + 600000) 
+            }).then(
+                signedUrl => {
+                    accessToken = signedUrl.split('?').pop()
+                }
+            )
+
+            console.log("ACCESSTOKEN---> ", accessToken)
+            
             const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
             const plateRegister = await Plate.create(plate)
 
