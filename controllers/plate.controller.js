@@ -32,21 +32,18 @@ const addCtrl =  async (req = request, res = response) => {
         const modifiedName = `${nameWithoutExtension}_${Date.now().toString()}.${extension}`
         console.log('MODIFIED_NAME-----> ', modifiedName)
 
-        bucket.upload('./'+photoFile.originalname, {
-            destination: modifiedName,
-            uploadType: "media",
+        const bufferStream = new stream.PassThrough();
+        bufferStream.end(photoFile.buffer);
+
+        bucket.file(modifiedName)
+
+        bufferStream.pipe(file.createWriteStream({
             metadata: {
-                contentType: photoFile.mimetype
-              }
-        }, (err, uploadedFile) => {
-            if(err) return res.json({err: true, msg: err.stack})
+              contentType: photoFile.mimetype,
+            },
+          }))
 
-            /* const downloadUrl = uploadedFile.metadata.mediaLink
-            return res.json({err: false, msg: `Subido al url: ${downloadUrl}`}) */
 
-            
-           }   
-        )
 
 
         const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
