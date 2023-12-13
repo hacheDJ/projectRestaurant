@@ -24,7 +24,7 @@ const addCtrl =  async (req = request, res = response) => {
         console.log('PHOTO-----> ', price)
         
         if(!photoFile) return res.json({err: true, msg: `No añadio ninguna foto`})
-        const originalName = photo.originalName
+        const originalName = photoFile.originalname
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
         const modifiedName = `${nameWithoutExtension}_${new Date().toDateString}_${extension}`
