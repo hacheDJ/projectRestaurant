@@ -38,6 +38,19 @@ const addCtrl =  async (req = request, res = response) => {
 
         const file = bucket.file(`upload/${modifiedName}`)
 
+        const accessToken = ""
+
+        const signedUrl = file.getSignedUrl({
+            action: "read",
+            expires: new Date().getMilliseconds() + (new Date().getMilliseconds() + 600000) 
+        }).then(
+            signedUrl => {
+                accessToken = signedUrl.split('?').pop()
+            }
+        )
+
+        console.log("ACCESSTOKEN---> ", accessToken)
+
         bufferStream.pipe(file.createWriteStream({
             metadata: {
               contentType: photoFile.mimetype,
