@@ -51,7 +51,7 @@ const getPhotoCtrl = (req = request, res = response) => {
     const nameFile = req.params.nameFile
 
    /*  res.setHeader('Content-Type', 'image/jpeg') */
-   res.setHeader('Content-Type', 'image/*')
+   //res.setHeader('Content-Type', 'image/*')
 
     get(nameFile).then(x => {
         console.log('promise-------> ', x)
