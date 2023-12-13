@@ -28,7 +28,7 @@ const credentials = new aws.Credentials({
   // Obtiene los detalles de la identidad
   sts.getCallerIdentity({}, (err, data) => {
     if (err) {
-      console.error('EEEError al obtener detalles de la cuenta:', err);
+      console.error('XXEEEError al obtener detalles de la cuenta:', err);
     } else {
       console.log('ID de cuenta:', data.Account);
       console.log('Arn de cuenta:', data.Arn);
