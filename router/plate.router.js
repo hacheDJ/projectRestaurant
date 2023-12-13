@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { listAllCtrl, addCtrl, editCtrl, getPhotoCtrl } = require('../controllers/plate.controller')
-const upload = require('../middlewares/multer')
+const upload = require('../middlewares/multer.firebase')
 
 //upload.fields([{name:"namePlate", maxCount:1}, {name:"description", maxCount:1}, {name:"price", maxCount:1}, {name:"photo", maxCount:1}, {name:"state", maxCount:1},] )
 const router = Router()
