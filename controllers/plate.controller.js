@@ -53,7 +53,7 @@ const addCtrl =  async (req = request, res = response) => {
             res.json({ err: true, msg: err.message })
           }).on('finish', async () => {
 
-            const accessToken = ""
+            let accessToken = ""
 
             await file.getSignedUrl({
                 action: "read",
