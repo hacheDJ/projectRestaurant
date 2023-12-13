@@ -49,7 +49,7 @@ const addCtrl =  async (req = request, res = response) => {
 
         res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
     //} catch (err) {
-        res.json({err: true, msg: err.message})
+     //   res.json({err: true, msg: err.message})
     //}
     
     
