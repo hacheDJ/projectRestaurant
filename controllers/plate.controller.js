@@ -34,21 +34,23 @@ const addCtrl =  async (req = request, res = response) => {
             metadata: {
                 contentType: photoFile.mimetype
               }
-        }, async (err, uploadedFile) => {
+        }, (err, uploadedFile) => {
             if(err) return res.json({err: true, msg: err})
 
             /* const downloadUrl = uploadedFile.metadata.mediaLink
             return res.json({err: false, msg: `Subido al url: ${downloadUrl}`}) */
 
-            const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
+            
+           }   
+        )
+
+
+        const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
         const plateRegister = await Plate.create(plate)
 
         /* console.log('NEW PLATE', plateRegister) */
 
         return res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
-           }   
-        )
-
         
     } catch (err) {
         res.json({err: true, msg: err.message})
