@@ -45,7 +45,7 @@ const addCtrl =  async (req = request, res = response) => {
           })).on('error', (err) => {
             console.error(err);
             res.json({ err: true, msg: err.message })
-          }).on('finish', () => {
+          }).on('finish', async () => {
 
       
             const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
