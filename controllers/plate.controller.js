@@ -12,7 +12,9 @@ const addCtrl =  async (req = request, res = response) => {
     
     try {
         
-        const {namePlate, descriptionPlate, photo, price} = req.body
+        const {namePlate, descriptionPlate, price} = req.body
+        const photoFile = req.file
+
         console.log('REQBODY-----> ', req.body)
         console.log('REQ-FILE-----> ', req.file)
         console.log('REQ-PHOTO-----> ', req.photo)
@@ -21,16 +23,16 @@ const addCtrl =  async (req = request, res = response) => {
         console.log('PHOTO-----> ', photo)
         console.log('PHOTO-----> ', price)
         
-        if(!photo) return res.json({err: true, msg: `No añadio ninguna foto`})
+        if(!photoFile) return res.json({err: true, msg: `No añadio ninguna foto`})
         const originalName = photo.originalName
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
         const modifiedName = `${nameWithoutExtension}_${new Date().toDateString}_${extension}`
 
-        bucket.upload(photo.buffer, {
+        bucket.upload(photoFile.buffer, {
             destination: modifiedName,
             metadata: {
-                contentType: photo.mimetype
+                contentType: photoFile.mimetype
               }
         }, (err, uploadedFile) => {
             if(err) return res.json({err: true, msg: err})
