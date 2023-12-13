@@ -13,6 +13,7 @@ const addCtrl =  async (req = request, res = response) => {
     try {
         
         const {namePlate, descriptionPlate, photo, price} = req.body
+        console.log('REQBODY-----> ', req.body)
         console.log('PHOTO-----> ', namePlate)
         console.log('PHOTO-----> ', descriptionPlate)
         console.log('PHOTO-----> ', photo)
