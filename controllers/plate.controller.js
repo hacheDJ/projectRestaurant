@@ -56,8 +56,7 @@ const addCtrl =  async (req = request, res = response) => {
             const accessToken = ""
 
             file.getSignedUrl({
-                action: "read",
-                expires: new Date().getMilliseconds() + (new Date().getMilliseconds() + 600000) 
+                action: "read" 
             }).then(
                 signedUrl => {
                     accessToken = signedUrl.split('?').pop()
@@ -65,7 +64,7 @@ const addCtrl =  async (req = request, res = response) => {
             )
 
             console.log("ACCESSTOKEN---> ", accessToken)
-            
+
             const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
             const plateRegister = await Plate.create(plate)
 
