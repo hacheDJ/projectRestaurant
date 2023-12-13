@@ -42,17 +42,25 @@ const addCtrl =  async (req = request, res = response) => {
             metadata: {
               contentType: photoFile.mimetype,
             },
-          }))
+          })).on('error', (err) => {
+            console.error(err);
+            res.json({ err: true, msg: err.message })
+          }).on('finish', () => {
+
+      
+            const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
+            const plateRegister = await Plate.create(plate)
+
+            return res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
+          })
 
 
 
 
-        const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
+        /* const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
         const plateRegister = await Plate.create(plate)
 
-        /* console.log('NEW PLATE', plateRegister) */
-
-        return res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
+        return res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`}) */
         
     } catch (err) {
         res.json({err: true, msg: err.message})
