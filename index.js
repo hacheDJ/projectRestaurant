@@ -23,22 +23,22 @@ const credentials = new aws.Credentials({
   aws.config.credentials = credentials;
   
   // Crea una instancia de IAM (Identity and Access Management)
-  const iam = new aws.IAM();
-  
-  // Obtiene los detalles de la cuenta
-  iam.getAccountSummary({}, (err, data) => {
+  const sts = new aws.STS();
+
+  // Obtiene los detalles de la identidad
+  sts.getCallerIdentity({}, (err, data) => {
     if (err) {
       console.error('Error al obtener detalles de la cuenta:', err);
     } else {
-      console.log('ID de cuenta:', data.SummaryMap.AccountId);
-      console.log('Alias de cuenta:', data.SummaryMap.AccountAlias);
+      console.log('ID de cuenta:', data.Account);
+      console.log('Arn de cuenta:', data.Arn);
     }
   })
 
 
 
 
-  
+
 
 sequelize.sync().then(
     () => {
