@@ -13,9 +13,9 @@ const addCtrl =  async (req = request, res = response) => {
     try {
         
         const {namePlate, descriptionPlate, photo, price} = req.body
+        console.log('PHOTO-----> ', photo)
         
         if(!photo) return res.json({err: true, msg: `No añadio ninguna foto`})
-        console.log('PHOTO-----> ', photo)
         const originalName = photo.originalName
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
