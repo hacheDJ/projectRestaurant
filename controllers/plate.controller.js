@@ -20,7 +20,7 @@ const addCtrl =  async (req = request, res = response) => {
         //console.log('REQ-PHOTO-----> ', req.photo)
         console.log('PHOTO-----> ', namePlate)
         console.log('PHOTO-----> ', descriptionPlate)
-        console.log('PHOTO-----> ', photo)
+        //console.log('PHOTO-----> ', photo)
         console.log('PHOTO-----> ', price)
         
         if(!photoFile) return res.json({err: true, msg: `No añadio ninguna foto`})
