@@ -2,6 +2,7 @@ const {request, response} = require('express')
 const Plate = require('../models/plate')
 const {get} = require('../handlers/aws')
 const bucket = require('../handlers/firebase.admin')
+const stream = require('stream')
 
 const listAllCtrl =  async (req = request, res = response) => {
     const plates = await Plate.findAll()
