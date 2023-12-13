@@ -47,7 +47,7 @@ const addCtrl =  async (req = request, res = response) => {
 
         /* console.log('NEW PLATE', plateRegister) */
 
-        res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
+        return res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
     } catch (err) {
         res.json({err: true, msg: err.message})
     }
