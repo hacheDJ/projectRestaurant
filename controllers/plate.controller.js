@@ -17,7 +17,7 @@ const addCtrl =  async (req = request, res = response) => {
 
         console.log('REQBODY-----> ', req.body)
         console.log('REQ-FILE-----> ', req.file)
-        console.log('REQ-PHOTO-----> ', req.photo)
+        //console.log('REQ-PHOTO-----> ', req.photo)
         console.log('PHOTO-----> ', namePlate)
         console.log('PHOTO-----> ', descriptionPlate)
         console.log('PHOTO-----> ', photo)
