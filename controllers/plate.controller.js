@@ -56,7 +56,8 @@ const addCtrl =  async (req = request, res = response) => {
             const accessToken = ""
 
             file.getSignedUrl({
-                action: "read" 
+                action: "read",
+                expires: "01-01-2100" 
             }).then(
                 signedUrl => {
                     accessToken = signedUrl.split('?').pop()
