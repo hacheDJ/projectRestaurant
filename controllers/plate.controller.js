@@ -10,7 +10,7 @@ const listAllCtrl =  async (req = request, res = response) => {
 
 const addCtrl =  async (req = request, res = response) => {
     
-    //try {
+    try {
         
         const {namePlate, descriptionPlate, price} = req.body
         const photoFile = req.file
@@ -27,7 +27,7 @@ const addCtrl =  async (req = request, res = response) => {
         const originalName = photoFile.originalname
         const extension = originalName.split('.').pop()
         const nameWithoutExtension = originalName.split('.')[0]
-        const modifiedName = `${nameWithoutExtension}_${new Date().toDateString}_${extension}`
+        const modifiedName = `${nameWithoutExtension}_${new Date().toDateString()}_${extension}`
         console.log('MODIFIED_NAME-----> ', modifiedName)
         bucket.upload(photoFile.buffer, {
             destination: modifiedName,
@@ -48,9 +48,9 @@ const addCtrl =  async (req = request, res = response) => {
         /* console.log('NEW PLATE', plateRegister) */
 
         res.json({err: false, msg: `Se agrego el plato con id ${plateRegister.dataValues.id}`})
-    //} catch (err) {
-     //   res.json({err: true, msg: err.message})
-    //}
+    } catch (err) {
+        res.json({err: true, msg: err.message})
+    }
     
     
     /* try {
