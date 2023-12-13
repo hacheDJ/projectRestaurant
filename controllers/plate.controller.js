@@ -37,7 +37,7 @@ const addCtrl =  async (req = request, res = response) => {
                 contentType: photoFile.mimetype
               }
         }, (err, uploadedFile) => {
-            if(err) return res.json({err: true, msg: err})
+            if(err) return res.json({err: true, msg: err.stack})
 
             /* const downloadUrl = uploadedFile.metadata.mediaLink
             return res.json({err: false, msg: `Subido al url: ${downloadUrl}`}) */
