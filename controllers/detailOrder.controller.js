@@ -44,7 +44,8 @@ const remove = async (req = request, res = response) => {
 
 const editStateDelivered = async (req = request, res = response) => {
     const idDetailOrder = req.params.idDetailOrder
-    const detailOrder = {state: "entregado"}
+    const nameState = req.params.nameState
+    const detailOrder = {state: nameState}
 
     const DetailOrderWithStatePending = await DetailOrder.findOne({
         where: {

@@ -6,6 +6,6 @@ const router = Router()
 router
     .put('/detailOrder/edit', edit)
     .delete('/detailOrder/remove/:id', remove)
-    .put('/detailOrder/editStateDelivered/:idDetailOrder', editStateDelivered)
+    .put('/detailOrder/editStateDelivered/:idDetailOrder/:nameState', editStateDelivered)
 
 module.exports = router
