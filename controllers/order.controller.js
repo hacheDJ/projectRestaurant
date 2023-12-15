@@ -53,7 +53,7 @@ const listByStatePending = async (req = request, res = response) => {
                 attributes: ["namePlate"]
             }
         ],
-        attributes: ["quantity", "state"]
+        attributes: ["id", "quantity", "state"]
         
     })
 

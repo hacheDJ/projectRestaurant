@@ -38,12 +38,6 @@ const addCtrl =  async (req = request, res = response) => {
 
         const file = bucket.file(`upload/${modifiedName}`)
 
-        
-
-        
-
-        
-
         bufferStream.pipe(file.createWriteStream({
             metadata: {
               contentType: photoFile.mimetype,
@@ -52,14 +46,6 @@ const addCtrl =  async (req = request, res = response) => {
             console.error(err);
             res.json({ err: true, msg: err.message })
           }).on('finish', async () => {
-
-            const [metadata] = await file.getMetadata();
-
-            // Obtener el token de la URL pública generada automáticamente
-            //const token = metadata.metadata.firebaseStorageDownloadTokens;
-
-            console.log("METADATA---> ", await file.getMetadata())
-            //console.log("TOKEN---> ", token)
 
             const plate = {namePlate, descriptionPlate, price, photo: modifiedName, state: "disponible"}
             const plateRegister = await Plate.create(plate)
