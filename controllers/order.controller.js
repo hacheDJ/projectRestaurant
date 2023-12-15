@@ -43,17 +43,17 @@ const listByStatePending = async (req = request, res = response) => {
         include: [
             {
                 model: Order,
-                attributes: ["id", "state"],
-                where: {
-                    state: "pendiente"
-                }
+                attributes: ["id", "state"]
             },
             {
                 model: Plate,
                 attributes: ["namePlate"]
             }
         ],
-        attributes: ["id", "quantity", "state"]
+        attributes: ["id", "quantity", "state"],
+        where: {
+            state: "pendiente"
+        }
         
     })
 
